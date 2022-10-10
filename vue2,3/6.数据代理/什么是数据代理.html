@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单的数据代理，通过obj2也可以操纵obj.x</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        let obj = { x: 100 };
+        let obj2 = { y: 200 };
+        Object.defineProperty(obj2, 'x', {//为obj2对象添加了一个x属性
+            get() {
+                return obj.x; //将x的值设置为obj.x
+            },
+            set(value) {
+                obj.x = value;//当改变了x的值，obj.x的值也发生了改变
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+.a { 
+    font-size: large;
+}
+.red {
+    background-color: red;
+    font-family: "SF Pro SC", "SF Pro Text", "SF Pro Icons", "PingFang SC", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    font-weight: 800;
+    text-align: center;
+}
+.blue{
+    background-color: blue;
+}

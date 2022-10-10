@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>key原理</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="root">
+        <ul>
+            <!-- p是形参 -->
+            <!-- 遍历数组 -->
+            <!-- key是身份证号 -->
+            <h2>列表</h2>
+            <input type="text" placeholder="请输入名字(模糊搜索)" v-model="keyword">
+            <button @click="sortType = 2">age升序</button>
+            <button @click="sortType = 1">age降序</button>
+            <button @click="sortType = 0">原顺序</button>
+            <li v-for="p in filPersons" :key="p.id">
+                {{p.id}}-{{p.name}}--{{p.age}}
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false;//关闭vue小提示
+        new Vue({
+            el: '#root', //用于指定当前vue实例为哪个容器服务，值通常为css选择器字符串
+            data: {//data用于存储数据，暂时先写成一个对象 
+                name: 'USTC',
+                keyword: '',
+                sortType: 0,//0原顺序，1降序，2升序
+                persons: [
+                    { id: '001', name: 'A1', age: 90 },
+                    { id: '002', name: 'B2', age: 110 },
+                    { id: '003', name: 'C3', age: 18 },
+                    { id: '004', name: 'D4', age: 120 },
+                    { id: '005', name: 'E5', age: 60 }
+                ],//原数据，不能更改
+                //filPersons: [], //过渡的数据，可以更改,用于watch
+            },
+            //1.watch实现
+            //#region 
+            // watch: {
+            //     keyword: {
+            //         immediate: true,
+            //         handler(val) {
+            //             this.filPersons = this.persons.filter((p) => {
+            //                 return p.name.indexOf(val) !== -1;//有值
+            //            
+            //         }
+            //     }
+            // }
+            //#endregion
+            //2.用计算属性实现      
+            computed: {
+                filPersons() {
+                    const arr = this.persons.filter((p) => {
+                        return p.name.indexOf(this.keyword) !== -1;
+                    })
+                    //判断是否需要排序
+                    if (this.sortType) {
+                        arr.sort((p1, p2) => {
+                            return this.sortType === 1 ? p2.age - p1.age : p1.age - p2.age;//用sort函数进行排序
+                        })
+                    }
+                    return arr;
+                }
+            }
+
+        });//创建vue实例
+    </script>
+</body>
+
+</html>

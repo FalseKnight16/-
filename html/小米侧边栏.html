@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简洁版小米侧边栏案例</title>
+    <style>
+        /* 1、把 a 转换为块级元素 */
+        a {
+            display: block;
+            width: 230px;
+            height: 40px;
+            background-color: #55585a;
+            font-size: 14px;
+            color: #fff;
+            text-decoration: none;
+            text-indent: 2em;
+            /* 一个小技巧：单行文字垂直居中的代码，让文字的行高等于盒子的高度 */
+            line-height: 40px;
+        }
+
+        /* 2、鼠标经过链接变换背景颜色 */
+        a:hover {
+            background-color: #ff6700;
+        }
+        body{
+            background-color: red;
+            /* 线性渐变 - 从上到下（默认情况下）*/
+            background-image: linear-gradient(#e66465, #9198e5);
+            width: 230px;
+            height: 200px;
+            background-repeat: repeat;
+
+        }
+    </style>
+</head>
+
+<body>
+    <!--
+    说明：在实际开发中，为了避免链接堆叠，从而降低浏览器排名
+    开发中一般都将这些链接放在无序列表中，这里只是为了方便演示才这样使用
+	-->
+    <a href="#">手机 电话卡</a>
+    <a href="#">电视 盒子</a>
+    <a href="#">笔记本 平板</a>
+    <a href="#">出行 穿戴</a>
+    <a href="#">智能 路由器</a>
+    <a href="#">健康 儿童</a>
+    <a href="#">耳机 音响</a>
+    <div class="a"></div>
+</body>
+
+</html>

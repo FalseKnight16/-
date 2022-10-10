@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>盒子模型之边框的复合写法</title>
+    <style>
+        div {
+            width: 300px;
+            height: 200px;
+            /* 
+            -- border-width 边框的粗细，一般情况下使用 px --
+            border-width: 5px;
+            -- border-width 边框的样式 solid 实线边框 dashed 虚线边框 dotted 点线边框 --
+            border-style: solid;
+            background-color: pink;
+            */
+            /* 边框的复合写法 简写： */
+            border: 10px dotted skyblue;
+            /* 利用 CSS 层叠性将上边框单独覆盖 */
+            border-top: 10px dotted pink;
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>

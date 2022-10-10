@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>绑定样式</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <style>
+        .s1 {
+            width: 200px;
+            height: 100px;
+            font-size: 80px;
+        }
+
+        .s2 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-color: aqua;
+        }
+
+        .s3 {
+            font-weight: 400;
+            background-color: antiquewhite;
+        }
+
+        .s4 {
+            font-style: normal;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <!-- 绑定class样式--字符串写法，适用于样式的效果不确定，需要动态指定 -->
+        <div class="s1" :class="a" @click="changeMood">{{name}}</div> <br /> <br />
+        <!-- 绑定class样式--数组写法，适用于要绑定的个数不确定，名字也不确定 -->
+        <div class="s1" :class="arr">{{name}}</div> <br /> <br />
+        <!-- 绑定class样式--对象写法，适用于要绑定的个数确定，名字也确定 -->
+        <div class="s1" :class="classObj">{{name}}</div> <br /> <br />
+        <!-- 绑定style样式--对象写法，还可以用数组写法 -->
+        <div class="s1" :style="styleObj">{{name}}</div>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false;//关闭vue小提示
+        new Vue({
+            el: '#root', //用于指定当前vue实例为哪个容器服务，值通常为css选择器字符串
+            data: {//data用于存储数据，暂时先写成一个对象 
+                name: 'USTC',
+                a: '',
+                arr: ['s2', 's3', 's4'],
+                classObj:{
+                    s2:false,
+                    s3:false
+                },
+                styleObj:{
+                    fontSize:'40px',
+                    color:'red',
+                    backgroundColor:'orange'
+                }
+            },
+            methods: {
+                changeMood() {
+                    const arr = ['s2', 's3', 's4'];
+                    const index = Math.floor(Math.random() * 3);
+                    this.a = arr[index];
+                }
+            },
+
+        });//创建vue实例
+
+    </script>
+</body>
+
+</html>

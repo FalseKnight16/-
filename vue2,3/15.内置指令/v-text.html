@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初学vue</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="root">
+        <h3>你好，{{name}}</h3>
+        <h3 v-text="name"></h3>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false;//关闭vue小提示
+        new Vue({
+            el: '#root', //用于指定当前vue实例为哪个容器服务，值通常为css选择器字符串
+            data: {//data用于存储数据，暂时先写成一个对象 
+                name:'USTC'
+            }
+
+        });//创建vue实例
+
+    </script>
+</body>
+
+</html>

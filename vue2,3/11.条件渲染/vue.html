@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>条件渲染</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="root">
+        <!-- v-show条件渲染 -->
+        <h3 v-show="a">你好，{{name}}</h3>
+        <!-- v-if条件渲染 ,消失的非常彻底-->
+        <h3 v-if="a">你好，{{name}}</h3>
+        <!-- 切换频率高用v-show，切换频率低用v-if -->
+        <h2>n={{n}}</h2>
+        <button @click="n++">点我n+1</button>
+        <div v-show="n==1">Angular</div>
+        <div v-show="n==2">React</div>
+        <div v-show="n==3">Vue</div>
+        <br /> <br />
+        <div v-if="n==1">Angular</div>
+        <!-- if成立后，elseif就不在成立 -->
+        <div v-else-if="n==1">Angular Angular</div>
+        <div v-else-if="n==2">React</div>
+        <div v-else-if="n==3">Vue</div>
+       <!-- template只能配合v-if，不能配合v-show，不破坏结构 -->
+        <template v-if="n===1">
+            <h2>1</h2>
+            <h2>2</h2>
+            <h2>3</h2>
+        </template>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false;//关闭vue小提示
+        const vm = new Vue({
+            el: '#root', //用于指定当前vue实例为哪个容器服务，值通常为css选择器字符串
+            data: {//data用于存储数据，暂时先写成一个对象 
+                name: 'USTC',
+                a: 1 === 3,
+                n: 0
+            }
+
+        });//创建vue实例
+
+    </script>
+</body>
+
+</html>

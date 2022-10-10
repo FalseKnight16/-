@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>object.property方法</title>
+</head>
+
+<body>
+    <script>
+        let number = 18;
+        let person = {
+            name: '张三',
+            sex: '男'
+        }
+        Object.defineProperty(person, 'age', {
+            // value: 18, //默认不可枚举
+            // enumerable: true,//控制属性是否能被枚举，默认false
+            // Writable: true,//可以被修改,默认false
+            // configurable: true, //控制属性是否可以被删除，默认值false
+            // //当有人读取person的age属性时，get函数被调用，返回的值为age
+            get: function () {
+                console.log("有人读取age属性了");
+                return 'hello';
+            },
+            set(value) {
+                console.log("修改age值为",value);
+                number=value;
+            }
+        })
+        console.log(person);
+        // console.log(Object.keys(person));
+    </script>
+</body>
+
+</html>

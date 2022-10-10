@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>收集表单数据</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="root">
+        <form action="" @submit.prevent="demo">
+            <label for="demo">账号：</label>
+            <input type="text" id="demo" v-model.trim="userInfo.account"><br /><br />
+            <label for="demo1">密码：</label>
+            <input type="password" id="demo1" v-model.trim="userInfo.password"><br /><br />
+            <label for="demo2">年龄：</label>
+            <!-- v-model可以写修饰符 -->
+            <input type="number" id="demo2" v-model.number="userInfo.age"><br /><br />
+            性别：
+            男<input type="radio" name="sex" v-model="userInfo.sex" value="男">
+            女<input type="radio" name="sex" v-model="userInfo.sex" value="女"><br /><br />
+            爱好：
+            学习<input type="checkbox" v-model="userInfo.hobby" value="study">
+            打游戏<input type="checkbox" v-model="userInfo.hobby" value="playgame">
+            吃饭<input type="checkbox" v-model="userInfo.hobby" value="eat"><br /><br />
+            所属学校：
+            <select v-model="userInfo.school">
+                <option value="">请选择学校</option>
+                <option value="中国科学技术大学">中国科学技术大学</option>
+                <option value="华中科技大学">华中科技大学</option>
+                <option value="上海交通大学">上海交通大学</option>
+                <option value="浙江大学">浙江大学 </option>
+            </select><br /><br />
+            多行输入：
+            <!-- 失去焦点的一瞬间更新属性值用.lazy -->
+            <textarea v-model.lazy="userInfo.other"></textarea><br /><br />
+            <input type="checkbox" v-model="userInfo.agree">是否阅读协议<a href="http://www.cskaoyan.com/forum.php">链接在这里</a>
+            <button>提交</button>
+        </form>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false;//关闭vue小提示
+        new Vue({
+            el: '#root', //用于指定当前vue实例为哪个容器服务，值通常为css选择器字符串
+            data: {//data用于存储数据，暂时先写成一个对象 
+                userInfo: {
+                    account: '',
+                    password: '',
+                    sex: '',
+                    hobby: [],
+                    school: '中国科学技术大学',
+                    other: '',
+                    agree: '',
+                    age:''
+                }
+            },
+            methods: {
+                demo() {
+                    console.log(JSON.stringify(this.userInfo));
+                }
+            },
+
+        });//创建vue实例
+
+    </script>
+</body>
+
+</html>
